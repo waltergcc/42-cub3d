@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:48:12 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/02 08:46:24 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/02 08:57:03 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ void	check_filename(char *file)
 	i = ft_strlen(file);
 	if (i <= 4)
 		exit_error(NULL, "Invalid file name.");
-	else if (!ft_strnstr((file + i - 4), ".ber", 4))
+	else if (!ft_strnstr((file + i - 4), ".cub", 4))
 		exit_error(NULL, "Invalid file extension.");
 }
