@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/02 10:18:38 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:41:43 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 
 # include "../lib/libft/libft.h"
 
-# define TILES		"01CEP"
+# define TILES	"01CEP"
+# define CUB 	1
+# define XPM	2
+# define NORTH	1
+# define SOUTH	2
+# define EAST	3
+# define WEST	4	
 
 typedef unsigned int	t_uint;
 
@@ -50,6 +56,10 @@ typedef struct s_game
 	char		*south;
 	char		*east;
 	char		*west;
+	int			north_count;
+	int			south_count;
+	int			east_count;
+	int			west_count;
 	t_map		*map;
 	t_point		curr;
 	t_point		next;
@@ -61,7 +71,7 @@ typedef struct s_game
 t_tile	get_tile(t_game *so_long, t_point p);
 int		flood_fill(t_map *map, t_point curr, char **path);
 int		exit_error(t_game *so_long, char *msg);
-void	check_filename(char *file);
+void	check_filename(char *file, int mode);
 int		is_same_point(t_point a, t_point b);
 
 // clean_exit.c

@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:44:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/02 10:16:54 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:42:07 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ void	init_game(t_game *cub3d)
 	cub3d->south = NULL;
 	cub3d->east = NULL;
 	cub3d->west = NULL;
+	cub3d->north_count = 0;
+	cub3d->south_count = 0;
+	cub3d->east_count = 0;
+	cub3d->west_count = 0;
 }
 
 void	launch_game(char *file)
@@ -33,6 +37,6 @@ int	main(int ac, char **av)
 {
 	if (ac != 2)
 		exit_error(NULL, "Invalid number of arguments.");
-	check_filename(av[1]);
+	check_filename(av[1], CUB);
 	launch_game(av[1]);
 }
