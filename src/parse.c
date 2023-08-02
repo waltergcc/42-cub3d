@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/02 12:57:45 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:10:02 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,25 @@ int		have_all_params(t_game *cub3d)
 	return (0);
 }
 
-// void	parse_line(t_game *cub3d, char *line, int i)
-// {
-// 	while (ft_isspace(line[i]))
-// 		i++;
-// 	{
-// 		if ()
-// 	}
-// }
+void	parse_line(t_game *cub3d, char *line, int i)
+{
+	(void)cub3d;
+	
+	while (ft_isspace(line[i]))
+		i++;
+	if (ft_strncmp(line + i, "NO", 2) == 0)
+		printf("NO\n");
+	else if (ft_strncmp(line + i, "SO", 2) == 0)
+		printf("SO\n");
+	else if (ft_strncmp(line + i, "WE", 2) == 0)
+		printf("WE\n");
+	else if (ft_strncmp(line + i, "EA", 2) == 0)
+		printf("EA\n");
+	else if (ft_strncmp(line + i, "F", 1) == 0)
+		printf("F\n");
+	else if (ft_strncmp(line + i, "C", 1) == 0)
+		printf("C\n");
+}
 
 void	parse_file(t_game *cub3d, char *file)
 {
@@ -39,6 +50,7 @@ void	parse_file(t_game *cub3d, char *file)
 	line = get_next_line(fd);
 	while (!have_all_params(cub3d) && line)
 	{
+		parse_line(cub3d, line, 0);
 		free(line);
 		line = get_next_line(fd);
 	}
