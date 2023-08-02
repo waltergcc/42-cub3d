@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/02 08:52:20 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/02 10:18:38 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ typedef struct s_map
 
 typedef struct s_game
 {
+	char		*north;
+	char		*south;
+	char		*east;
+	char		*west;
 	t_map		*map;
 	t_point		curr;
 	t_point		next;
@@ -53,17 +57,18 @@ typedef struct s_game
 	t_uint		moves;
 }				t_game;
 
+// utils.c
 t_tile	get_tile(t_game *so_long, t_point p);
 int		flood_fill(t_map *map, t_point curr, char **path);
 int		exit_error(t_game *so_long, char *msg);
 void	check_filename(char *file);
 int		is_same_point(t_point a, t_point b);
 
+// clean_exit.c
 void	clean_tiles(char **tiles);
 void	clean_game(t_game *so_long);
 int		quit_game(t_game *so_long);
 
-void	check_map(t_game *so_long);
-void	read_map(t_game *so_long, char *file);
+void	parse_file(t_game *so_long, char *file);
 
 #endif
