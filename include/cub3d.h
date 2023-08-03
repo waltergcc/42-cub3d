@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 12:16:57 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 16:27:36 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_game
 	char		*south;
 	char		*east;
 	char		*west;
+	char		*line;
 	int			north_count;
 	int			south_count;
 	int			east_count;
@@ -76,7 +77,7 @@ void	check_filename(t_game *cub3d, char *file, int mode);
 
 // clean_exit.c
 // void	clean_tiles(char **tiles);
-// int		quit_game(t_game *so_long);
+int		quit_game(t_game *cub3d);
 void	clean_game(t_game *cub3d);
 
 void	parse_file(t_game *cub3d, char *file);

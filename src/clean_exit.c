@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:28:49 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 12:19:48 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 16:27:10 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,15 @@ void	clean_game(t_game *cub3d)
 		free (cub3d->east);
 	if (cub3d->west)
 		free (cub3d->west);
+	if (cub3d->line)
+		free (cub3d->line);
 	// if (so_long->mlx)
 	// if (so_long->map)
 	// 	clean_map(so_long->map);
 }
 
-// int	quit_game(t_game *so_long)
-// {
-// 	clean_game(so_long);
-// 	exit(EXIT_SUCCESS);
-// }
+int	quit_game(t_game *cub3d)
+{
+	clean_game(cub3d);
+	exit(EXIT_SUCCESS);
+}

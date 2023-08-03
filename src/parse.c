@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 15:56:10 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 16:44:08 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,28 @@ char	*get_value(char *line, int i)
 void	check_texture(t_game *cub3d, char *file, int face)
 {
 	check_texture_file(cub3d, file, 0);
-	if (face == NORTH)
+	if (face == NORTH && cub3d->north_count == 0)
 	{
 		cub3d->north = ft_strdup(file);
 		cub3d->north_count++;
 	}
-	else if (face == SOUTH)
+	else if (face == SOUTH && cub3d->south_count == 0)
 	{
 		cub3d->south = ft_strdup(file);
 		cub3d->south_count++;
 	}
-	else if (face == EAST)
+	else if (face == EAST && cub3d->east_count == 0)
 	{
 		cub3d->east = ft_strdup(file);
 		cub3d->east_count++;
 	}
-	else if (face == WEST)
+	else if (face == WEST && cub3d->west_count == 0)
 	{
 		cub3d->west = ft_strdup(file);
 		cub3d->west_count++;
 	}
+	else
+		exit_error(cub3d, "Has repeated textures calls in this input file");
 }
 
 int	have_duplicates(t_game *cub3d)
@@ -104,24 +106,23 @@ void	final_check(t_game *cub3d)
 	if (!have_all_params(cub3d))
 		exit_error(cub3d, "The input file doesn't have all parameters");
 	if (have_duplicates(cub3d))
-		exit_error(cub3d, "The input file has duplicated options");
+		exit_error(cub3d, "Has repeated textures in this input file");
 }
 
 void	parse_file(t_game *cub3d, char *file)
 {
 	int		fd;
-	char	*line;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		exit_error(cub3d, "Couldn't open the input file");
-	line = get_next_line(fd);
-	while (!have_all_params(cub3d) && line)
+	cub3d->line = get_next_line(fd);
+	while (!have_all_params(cub3d) && cub3d->line)
 	{
-		parse_line(cub3d, line, 0);
-		free(line);
-		line = get_next_line(fd);
+		parse_line(cub3d, cub3d->line, 0);
+		free(cub3d->line);
+		cub3d->line = get_next_line(fd);
 	}
-	close (fd);
 	final_check(cub3d);
+	close (fd);
 }
