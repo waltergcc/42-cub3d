@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:26:10 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 00:10:48 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 00:22:53 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ void	parse_map_line(t_game *cub3d, char *line)
 	{
 		if (!ft_isset(line[i], MAP_CHARS))
 			exit_error(cub3d, "Invalid character in map");
+		if (ft_isset(line[i], SPAWN))
+		{
+			if (cub3d->spawn == 0)
+				cub3d->spawn = line[i];
+			else
+				exit_error(cub3d, "Multiple spawn points");
+		}
 	}
 }
 

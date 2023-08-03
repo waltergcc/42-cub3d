@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 00:09:41 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 00:22:03 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_game
 	int			floor;
 	int			start_map;
 	char		*temp_map;
+	char		spawn;
 	char		**map;
 	
 }				t_game;
