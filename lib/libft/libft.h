@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:36:31 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 17:51:31 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 20:42:28 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
-
-# define MAX_FILES 10000
 
 typedef struct s_list
 {
@@ -142,10 +140,6 @@ int		ft_precision_nbr(t_flags *flags, int n);
 int		ft_precision_others(int n, t_flags *flags, int hex);
 
 char	*get_next_line(int fd);
-size_t	strlen_at(const char *s, int c);
-char	*cpy_buffer(const char *s, size_t n);
-char	*find_chr(const char *s, int c);
-char	*merge_previous_and_current(char *s1, char const *s2);
 char	**ft_split2(char *str, char *charset);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 01:34:02 by wcorrea-          #+#    #+#              #
-#    Updated: 2023/08/03 10:54:59 by wcorrea-         ###   ########.fr        #
+#    Updated: 2023/08/03 20:42:14 by wcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ FT_STR = ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c \
 FT_PRINTF = ft_printf.c ft_print_std.c ft_print_hex.c ft_print_unsigned.c \
 		ft_print_address.c ft_check_flags.c ft_flags_utils.c ft_precision_print.c
 
-FT_GNL = get_next_line.c get_next_line_utils.c
+FT_GNL = get_next_line.c
 
 SRC = ${FT_IS} ${FT_TO} ${FT_PUT} ${FT_MEM} ${FT_LST} ${FT_STR} ${FT_PRINTF} ${FT_GNL}
 
