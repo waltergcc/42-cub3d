@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 17:09:46 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 17:57:48 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@
 
 # define TILES	"01CEP"
 
-# define NO		0
-# define YES 	1
+# define NO			0
+# define YES 		1
 
-# define CUB 	1
-# define XPM	2
+# define CUB 		1
+# define XPM		2
 
-# define NORTH	1
-# define SOUTH	2
-# define EAST	3
-# define WEST	4
+# define NORTH		1
+# define SOUTH		2
+# define EAST		3
+# define WEST		4
+# define FLOOR		5
+# define CEILING	6
 
 typedef struct s_game
 {
@@ -35,6 +37,7 @@ typedef struct s_game
 	char		*east;
 	char		*west;
 	char		*line;
+	char		**colors;
 	int			north_count;
 	int			south_count;
 	int			east_count;
@@ -51,5 +54,7 @@ void	clean_game(t_game *cub3d);
 
 // parse.c
 void	parse_file(t_game *cub3d, char *file);
+
+void	free_split(char **split);
 
 #endif

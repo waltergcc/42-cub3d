@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 17:21:42 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 18:18:42 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,65 @@ void	check_texture(t_game *cub3d, char *file, int face)
 	else
 		exit_error(cub3d, "Has repeated textures calls in this input file");
 }
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+}
+// void	set_colors(t_game *cub3d, int r, int g, int b, int face)
+// {
+	// if (face == FLOOR && cub3d->floor_count == 0)
+	// {
+	// 	cub3d->floor = color;
+	// 	cub3d->floor_count++;
+	// }
+	// else if (face == CEILING && cub3d->ceiling_count == 0)
+	// {
+	// 	cub3d->ceiling = color;
+	// 	cub3d->ceiling_count++;
+	// }
+	// else
+	// 	exit_error(cub3d, "Has repeated colors calls in this input file");
+// }
+
+int	have_numbers(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (!ft_isdigit(str[i]))
+			return (NO);
+	return (YES);
+}
+
+void	check_color(t_game *cub3d, char *color, int face)
+{
+	int	r;
+	int	g;
+	int	b;
+	(void)face;
+	
+	if (ft_count_words(color, ',') != 3)
+		exit_error(cub3d, "Invalid color format");
+	cub3d->colors = ft_split(color, ',');
+	if (!have_numbers(cub3d->colors[0]) || !have_numbers(cub3d->colors[1])
+		|| !have_numbers(cub3d->colors[2]))
+		exit_error(cub3d, "Colors must have only digits");
+	r = ft_atoi(cub3d->colors[0]);
+	g = ft_atoi(cub3d->colors[1]);
+	b = ft_atoi(cub3d->colors[2]);
+	free_split(cub3d->colors);
+	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+		exit_error(cub3d, "Colors must be between 0 and 255");
+	// set_colors(cub3d, r, g, b, face);
+}
+
 
 int	have_duplicates(t_game *cub3d)
 {
