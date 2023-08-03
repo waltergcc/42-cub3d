@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:26:10 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 00:22:53 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 00:29:07 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,11 @@ void	parse_map(t_game *cub3d, int fd)
 		cub3d->temp_map = ft_strjoin(cub3d->temp_map, cub3d->line);
 		free(cub3d->line);
 		cub3d->line = get_next_line(fd);
+	}
+	cub3d->map = ft_split(cub3d->temp_map, '\n');
+	if (cub3d->temp_map)
+	{
+		free(cub3d->temp_map);
+		cub3d->temp_map = NULL;
 	}
 }

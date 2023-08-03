@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:28:49 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 00:09:41 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 00:30:39 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	clean_game(t_game *cub3d)
 		free_split(cub3d->colors);
 	if (cub3d->temp_map)
 		free (cub3d->temp_map);
+	if (cub3d->map)
+		free_split(cub3d->map);
 }
 
 int	quit_game(t_game *cub3d)
