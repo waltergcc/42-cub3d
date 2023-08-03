@@ -6,37 +6,11 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 20:36:02 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 20:47:02 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-char	*get_next_line2(int fd)
-{
-	char	*buffer;
-	char	character;
-	int		i;
-	int		rd;
-
-	i = 0;
-	rd = 1;
-	character = 0;
-	if (BUFFER_SIZE <= 0)
-		return (NULL);
-	buffer = malloc(100000);
-	while (rd > 0)
-	{
-		rd = read(fd, &character, BUFFER_SIZE - BUFFER_SIZE + 1);
-		buffer[i++] = character;
-		if (character == '\n')
-			break ;
-	}
-	buffer[i] = '\0';
-	if (rd == -1 || i == 0 || (!buffer[i - 1] && !rd))
-		return (free(buffer), NULL);
-	return (buffer);
-}
 
 int	have_all_params(t_game *cub3d)
 {
@@ -91,6 +65,7 @@ void	free_split(char **split)
 		free(split[i++]);
 	free(split);
 }
+
 int	have_numbers(char *str)
 {
 	int	i;
@@ -128,7 +103,6 @@ void	check_color(t_game *cub3d, char *color, int face)
 	else
 		exit_error(cub3d, "Has repeated colors calls in this input file");
 }
-
 
 int	have_duplicates(t_game *cub3d)
 {
@@ -175,12 +149,12 @@ void	parse_file(t_game *cub3d, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		exit_error(cub3d, "Couldn't open the input file");
-	cub3d->line = get_next_line2(fd);
+	cub3d->line = get_next_line(fd);
 	while (cub3d->line)
 	{
 		parse_line(cub3d, cub3d->line, 0);
 		free(cub3d->line);
-		cub3d->line = get_next_line2(fd);
+		cub3d->line = get_next_line(fd);
 	}
 	final_check(cub3d);
 	close (fd);
