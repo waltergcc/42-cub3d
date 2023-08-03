@@ -1,45 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_isset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 22:47:42 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/06/04 13:11:46 by wcorrea-         ###   ########.fr       */
+/*   Created: 2023/06/22 09:17:44 by wcorrea-          #+#    #+#             */
+/*   Updated: 2023/06/22 09:24:18 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_set(char c, char const *set)
+int	ft_isset(int c, char *set)
 {
-	while (*set)
+	int	i;
+
+	i = 0;
+	while (set[i])
 	{
-		if (c == *set)
+		if (set[i] == c)
 			return (1);
-		set++;
+		i++;
 	}
 	return (0);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	char	*trimmed;
-	size_t	i;
-	size_t	j;
-
-	if (!s1)
-		return (NULL);
-	i = 0;
-	j = ft_strlen(s1);
-	while (s1[i] && is_set(s1[i], set))
-		i++;
-	if (i == j)
-		return (ft_strdup(""));
-	j--;
-	while (is_set(s1[j], set))
-		j--;
-	trimmed = ft_substr(s1, i, j - i + 1);
-	return (trimmed);
 }

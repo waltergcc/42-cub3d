@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:36:31 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/02 12:57:13 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 10:54:46 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+int		ft_isset(int c, char *set);
 int		ft_isspace(int c);
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *s, int c, size_t n);
@@ -144,5 +145,6 @@ size_t	strlen_at(const char *s, int c);
 char	*cpy_buffer(const char *s, size_t n);
 char	*find_chr(const char *s, int c);
 char	*merge_previous_and_current(char *s1, char const *s2);
+char	**ft_split2(char *str, char *charset);
 
 #endif
