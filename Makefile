@@ -6,13 +6,16 @@
 #    By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 08:04:49 by wcorrea-          #+#    #+#              #
-#    Updated: 2023/08/02 12:58:59 by wcorrea-         ###   ########.fr        #
+#    Updated: 2023/08/03 21:08:37 by wcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 OUT = cub3D
 
-SRC = src/main.c src/utils.c src/parse.c src/clean_exit.c
+SRC = src/main.c \
+		src/utils.c \
+		src/parse.c src/parse_utils.c \
+		src/clean_exit.c
 
 OBJS = ${SRC:.c=.o}
 

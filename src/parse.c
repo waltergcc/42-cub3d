@@ -6,41 +6,11 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 20:49:49 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 21:02:37 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	have_all_params(t_game *cub3d)
-{
-	if (cub3d->north && cub3d->south && cub3d->east && cub3d->west
-		&& cub3d->floor != -1 && cub3d->ceiling != -1)
-		return (YES);
-	return (NO);
-}
-
-void	check_texture_file(t_game *cub3d, char *file, int fd)
-{
-	check_filename(cub3d, file, XPM);
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		exit_error(cub3d, "Invalid texture file.");
-	close(fd);
-}
-
-char	*get_value(char *line, int i)
-{
-	int	end;
-
-	while (line && ft_isspace(line[i]))
-		i++;
-	end = i;
-	while (line[end] && !ft_isspace(line[end]) && line[end] != '\n')
-		end++;
-	line[end] = '\0';
-	return (line + i);
-}
 
 void	check_texture(t_game *cub3d, char *file, int face)
 {
@@ -55,27 +25,6 @@ void	check_texture(t_game *cub3d, char *file, int face)
 		cub3d->west = ft_strdup(file);
 	else
 		exit_error(cub3d, "Has repeated textures calls in this input file");
-}
-
-void	free_split(char **split)
-{
-	int	i;
-
-	i = 0;
-	while (split[i])
-		free(split[i++]);
-	free(split);
-}
-
-int	have_numbers(char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		if (!ft_isdigit(str[i]))
-			return (NO);
-	return (YES);
 }
 
 void	check_color(t_game *cub3d, char *color, int face)
@@ -105,18 +54,6 @@ void	check_color(t_game *cub3d, char *color, int face)
 		exit_error(cub3d, "Has repeated colors calls in this input file");
 }
 
-int	have_duplicates(t_game *cub3d)
-{
-	if (ft_strcmp(cub3d->north, cub3d->south) == 0
-		|| ft_strcmp(cub3d->north, cub3d->east) == 0
-		|| ft_strcmp(cub3d->north, cub3d->west) == 0
-		|| ft_strcmp(cub3d->south, cub3d->east) == 0
-		|| ft_strcmp(cub3d->south, cub3d->west) == 0
-		|| ft_strcmp(cub3d->east, cub3d->west) == 0)
-		return (YES);
-	return (NO);
-}
-
 void	parse_line(t_game *cub3d, char *line, int i)
 {
 	while (ft_isspace(line[i]))
@@ -135,14 +72,6 @@ void	parse_line(t_game *cub3d, char *line, int i)
 		check_color(cub3d, get_value(line, i + 1), CEILING);
 }
 
-void	final_check(t_game *cub3d)
-{
-	if (!have_all_params(cub3d))
-		exit_error(cub3d, "The input file doesn't have all parameters");
-	if (have_duplicates(cub3d))
-		exit_error(cub3d, "Has repeated textures in this input file");
-}
-
 void	parse_file(t_game *cub3d, char *file)
 {
 	int		fd;
@@ -157,6 +86,9 @@ void	parse_file(t_game *cub3d, char *file)
 		free(cub3d->line);
 		cub3d->line = get_next_line(fd);
 	}
-	final_check(cub3d);
+	if (!have_all_params(cub3d))
+		exit_error(cub3d, "The input file doesn't have all parameters");
+	if (have_duplicates(cub3d))
+		exit_error(cub3d, "Has repeated textures in this input file");
 	close (fd);
 }

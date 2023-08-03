@@ -6,11 +6,32 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:48:12 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 17:10:28 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 20:56:03 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+}
+
+int	have_numbers(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (!ft_isdigit(str[i]))
+			return (NO);
+	return (YES);
+}
 
 int	exit_error(t_game *cub3d, char *msg)
 {
