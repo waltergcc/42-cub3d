@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 16:44:08 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 17:21:42 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	have_all_params(t_game *cub3d)
 {
 	if (cub3d->north && cub3d->south && cub3d->east && cub3d->west)
-		return (1);
-	return (0);
+		return (YES);
+	return (NO);
 }
 
 void	check_texture_file(t_game *cub3d, char *file, int fd)
@@ -79,8 +79,8 @@ int	have_duplicates(t_game *cub3d)
 		|| ft_strcmp(cub3d->south, cub3d->east) == 0
 		|| ft_strcmp(cub3d->south, cub3d->west) == 0
 		|| ft_strcmp(cub3d->east, cub3d->west) == 0)
-		return (1);
-	return (0);
+		return (YES);
+	return (NO);
 }
 
 void	parse_line(t_game *cub3d, char *line, int i)
@@ -117,7 +117,7 @@ void	parse_file(t_game *cub3d, char *file)
 	if (fd < 0)
 		exit_error(cub3d, "Couldn't open the input file");
 	cub3d->line = get_next_line(fd);
-	while (!have_all_params(cub3d) && cub3d->line)
+	while (cub3d->line)
 	{
 		parse_line(cub3d, cub3d->line, 0);
 		free(cub3d->line);

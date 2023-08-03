@@ -6,31 +6,11 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:28:49 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 16:27:10 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 17:10:03 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// void	clean_tiles(char **tiles)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	if (!tiles)
-// 		return ;
-// 	while (tiles[i])
-// 		free (tiles[i++]);
-// 	free (tiles);
-// }
-
-// void	clean_map(t_map *map)
-// {
-// 	if (!map)
-// 		return ;
-// 	clean_tiles(map->tiles);
-// 	free (map);
-// }
 
 void	clean_game(t_game *cub3d)
 {
@@ -46,9 +26,6 @@ void	clean_game(t_game *cub3d)
 		free (cub3d->west);
 	if (cub3d->line)
 		free (cub3d->line);
-	// if (so_long->mlx)
-	// if (so_long->map)
-	// 	clean_map(so_long->map);
 }
 
 int	quit_game(t_game *cub3d)
