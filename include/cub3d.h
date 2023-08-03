@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 21:05:11 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 23:27:03 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define FLOOR		5
 # define CEILING	6
 
+# define SPAWN		"NSEW"
+# define MAP_CHARS	" 01NSEW"
+
 typedef struct s_game
 {
 	char		*north;
@@ -38,6 +41,7 @@ typedef struct s_game
 	char		**colors;
 	int			ceiling;
 	int			floor;
+	int			start_map;
 }				t_game;
 
 // utils.c
@@ -61,5 +65,8 @@ int		have_duplicates(t_game *cub3d);
 int		have_all_params(t_game *cub3d);
 void	check_texture_file(t_game *cub3d, char *file, int fd);
 char	*get_value(char *line, int i);
+
+// parse_map.c
+void	parse_map(t_game *cub3d, int fd);
 
 #endif

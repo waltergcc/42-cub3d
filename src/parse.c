@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 21:02:37 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 23:26:37 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	parse_line(t_game *cub3d, char *line, int i)
 		check_color(cub3d, get_value(line, i + 1), FLOOR);
 	else if (ft_strncmp(line + i, "C", 1) == 0)
 		check_color(cub3d, get_value(line, i + 1), CEILING);
+	else if (line[i] == '0' || line[i] == '1')
+		cub3d->start_map = YES;
 }
 
 void	parse_file(t_game *cub3d, char *file)
@@ -83,6 +85,8 @@ void	parse_file(t_game *cub3d, char *file)
 	while (cub3d->line)
 	{
 		parse_line(cub3d, cub3d->line, 0);
+		if (cub3d->start_map)
+			break ;
 		free(cub3d->line);
 		cub3d->line = get_next_line(fd);
 	}
@@ -90,5 +94,6 @@ void	parse_file(t_game *cub3d, char *file)
 		exit_error(cub3d, "The input file doesn't have all parameters");
 	if (have_duplicates(cub3d))
 		exit_error(cub3d, "Has repeated textures in this input file");
+	parse_map(cub3d, fd);
 	close (fd);
 }

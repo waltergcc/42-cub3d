@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:44:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 21:09:36 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 22:14:46 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_game(t_game *cub3d)
 	cub3d->colors = NULL;
 	cub3d->ceiling = -1;
 	cub3d->floor = -1;
+	cub3d->start_map = NO;
 }
 
 void	launch_game(char *file)
