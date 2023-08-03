@@ -2,4 +2,6 @@ NO tests/spr1.xpm
 SO tests/spr2.xpm
 WE tests/spr3.xpm
 EA tests/spr4.xpm
-EA tests/spr5.xpm
+
+F 255,255,0
+C 127,0,0

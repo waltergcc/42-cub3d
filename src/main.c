@@ -6,11 +6,23 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:44:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 18:26:39 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 20:20:28 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	convert_int_bit_to_rgb(t_game *cub3d, int r, int g, int b)
+{
+	r = (cub3d->floor >> 16) & 0xFF;
+	g = (cub3d->floor >> 8) & 0xFF;
+	b = cub3d->floor & 0xFF;
+	printf("floor  : %d,%d,%d\n", r, g, b);
+	r = (cub3d->ceiling >> 16) & 0xFF;
+	g = (cub3d->ceiling >> 8) & 0xFF;
+	b = cub3d->ceiling & 0xFF;
+	printf("ceiling: %d,%d,%d\n", r, g, b);
+}
 
 void	init_game(t_game *cub3d)
 {
@@ -20,6 +32,9 @@ void	init_game(t_game *cub3d)
 	cub3d->east = NULL;
 	cub3d->west = NULL;
 	cub3d->line = NULL;
+	cub3d->colors = NULL;
+	cub3d->ceiling = -1;
+	cub3d->floor = -1;
 }
 
 void	launch_game(char *file)
@@ -28,6 +43,7 @@ void	launch_game(char *file)
 
 	init_game(&cub3d);
 	parse_file(&cub3d, file);
+	convert_int_bit_to_rgb(&cub3d, 0, 0, 0);
 	quit_game(&cub3d);
 }
 

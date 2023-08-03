@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 18:26:27 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 20:09:00 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define CUB3D_H
 
 # include "../lib/libft/libft.h"
-
-# define TILES	"01CEP"
 
 # define NO			0
 # define YES 		1
@@ -38,6 +36,8 @@ typedef struct s_game
 	char		*west;
 	char		*line;
 	char		**colors;
+	int			ceiling;
+	int			floor;
 }				t_game;
 
 // utils.c

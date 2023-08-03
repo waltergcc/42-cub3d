@@ -6,11 +6,37 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 18:26:07 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 20:36:02 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+char	*get_next_line2(int fd)
+{
+	char	*buffer;
+	char	character;
+	int		i;
+	int		rd;
+
+	i = 0;
+	rd = 1;
+	character = 0;
+	if (BUFFER_SIZE <= 0)
+		return (NULL);
+	buffer = malloc(100000);
+	while (rd > 0)
+	{
+		rd = read(fd, &character, BUFFER_SIZE - BUFFER_SIZE + 1);
+		buffer[i++] = character;
+		if (character == '\n')
+			break ;
+	}
+	buffer[i] = '\0';
+	if (rd == -1 || i == 0 || (!buffer[i - 1] && !rd))
+		return (free(buffer), NULL);
+	return (buffer);
+}
 
 int	have_all_params(t_game *cub3d)
 {
@@ -65,22 +91,6 @@ void	free_split(char **split)
 		free(split[i++]);
 	free(split);
 }
-// void	set_colors(t_game *cub3d, int r, int g, int b, int face)
-// {
-	// if (face == FLOOR && cub3d->floor_count == 0)
-	// {
-	// 	cub3d->floor = color;
-	// 	cub3d->floor_count++;
-	// }
-	// else if (face == CEILING && cub3d->ceiling_count == 0)
-	// {
-	// 	cub3d->ceiling = color;
-	// 	cub3d->ceiling_count++;
-	// }
-	// else
-	// 	exit_error(cub3d, "Has repeated colors calls in this input file");
-// }
-
 int	have_numbers(char *str)
 {
 	int	i;
@@ -97,21 +107,26 @@ void	check_color(t_game *cub3d, char *color, int face)
 	int	r;
 	int	g;
 	int	b;
-	(void)face;
 
 	if (ft_count_words(color, ',') != 3)
 		exit_error(cub3d, "Invalid color format");
 	cub3d->colors = ft_split(color, ',');
 	if (!have_numbers(cub3d->colors[0]) || !have_numbers(cub3d->colors[1])
 		|| !have_numbers(cub3d->colors[2]))
-		exit_error(cub3d, "Colors must have only digits");
+		exit_error(cub3d, "Colors must have only positive numbers");
 	r = ft_atoi(cub3d->colors[0]);
 	g = ft_atoi(cub3d->colors[1]);
 	b = ft_atoi(cub3d->colors[2]);
 	free_split(cub3d->colors);
+	cub3d->colors = NULL;
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		exit_error(cub3d, "Colors must be between 0 and 255");
-	// set_colors(cub3d, r, g, b, face);
+	if (face == FLOOR && cub3d->floor == -1)
+		cub3d->floor = (0 << 24 | r << 16 | g << 8 | b);
+	else if (face == CEILING && cub3d->ceiling == -1)
+		cub3d->ceiling = (0 << 24 | r << 16 | g << 8 | b);
+	else
+		exit_error(cub3d, "Has repeated colors calls in this input file");
 }
 
 
@@ -140,9 +155,9 @@ void	parse_line(t_game *cub3d, char *line, int i)
 	else if (ft_strncmp(line + i, "WE", 2) == 0)
 		check_texture(cub3d, get_value(line, i + 2), WEST);
 	else if (ft_strncmp(line + i, "F", 1) == 0)
-		printf("F\n");
+		check_color(cub3d, get_value(line, i + 1), FLOOR);
 	else if (ft_strncmp(line + i, "C", 1) == 0)
-		printf("C\n");
+		check_color(cub3d, get_value(line, i + 1), CEILING);
 }
 
 void	final_check(t_game *cub3d)
@@ -160,12 +175,12 @@ void	parse_file(t_game *cub3d, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		exit_error(cub3d, "Couldn't open the input file");
-	cub3d->line = get_next_line(fd);
+	cub3d->line = get_next_line2(fd);
 	while (cub3d->line)
 	{
 		parse_line(cub3d, cub3d->line, 0);
 		free(cub3d->line);
-		cub3d->line = get_next_line(fd);
+		cub3d->line = get_next_line2(fd);
 	}
 	final_check(cub3d);
 	close (fd);
