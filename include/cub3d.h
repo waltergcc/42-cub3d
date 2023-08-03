@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/02 17:41:43 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 12:16:57 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,17 @@ typedef struct s_game
 }				t_game;
 
 // utils.c
-t_tile	get_tile(t_game *so_long, t_point p);
-int		flood_fill(t_map *map, t_point curr, char **path);
-int		exit_error(t_game *so_long, char *msg);
-void	check_filename(char *file, int mode);
-int		is_same_point(t_point a, t_point b);
+// t_tile	get_tile(t_game *so_long, t_point p);
+// int		flood_fill(t_map *map, t_point curr, char **path);
+// int		is_same_point(t_point a, t_point b);
+int		exit_error(t_game *cub3d, char *msg);
+void	check_filename(t_game *cub3d, char *file, int mode);
 
 // clean_exit.c
-void	clean_tiles(char **tiles);
-void	clean_game(t_game *so_long);
-int		quit_game(t_game *so_long);
+// void	clean_tiles(char **tiles);
+// int		quit_game(t_game *so_long);
+void	clean_game(t_game *cub3d);
 
-void	parse_file(t_game *so_long, char *file);
+void	parse_file(t_game *cub3d, char *file);
 
 #endif

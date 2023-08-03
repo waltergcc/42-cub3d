@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:44:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/02 17:42:07 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 12:24:50 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	launch_game(char *file)
 int	main(int ac, char **av)
 {
 	if (ac != 2)
-		exit_error(NULL, "Invalid number of arguments.");
-	check_filename(av[1], CUB);
+		exit_error(NULL, "Invalid number of arguments");
+	check_filename(NULL, av[1], CUB);
 	launch_game(av[1]);
 }
