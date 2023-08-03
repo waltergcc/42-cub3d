@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:44:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 16:28:04 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 18:26:39 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ void	init_game(t_game *cub3d)
 	cub3d->east = NULL;
 	cub3d->west = NULL;
 	cub3d->line = NULL;
-	cub3d->north_count = 0;
-	cub3d->south_count = 0;
-	cub3d->east_count = 0;
-	cub3d->west_count = 0;
 }
 
 void	launch_game(char *file)

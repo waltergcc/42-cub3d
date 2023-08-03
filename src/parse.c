@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 18:18:42 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 18:26:07 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,14 @@ char	*get_value(char *line, int i)
 void	check_texture(t_game *cub3d, char *file, int face)
 {
 	check_texture_file(cub3d, file, 0);
-	if (face == NORTH && cub3d->north_count == 0)
-	{
+	if (face == NORTH && !cub3d->north)
 		cub3d->north = ft_strdup(file);
-		cub3d->north_count++;
-	}
-	else if (face == SOUTH && cub3d->south_count == 0)
-	{
+	else if (face == SOUTH && !cub3d->south)
 		cub3d->south = ft_strdup(file);
-		cub3d->south_count++;
-	}
-	else if (face == EAST && cub3d->east_count == 0)
-	{
+	else if (face == EAST && !cub3d->east)
 		cub3d->east = ft_strdup(file);
-		cub3d->east_count++;
-	}
-	else if (face == WEST && cub3d->west_count == 0)
-	{
+	else if (face == WEST && !cub3d->west)
 		cub3d->west = ft_strdup(file);
-		cub3d->west_count++;
-	}
 	else
 		exit_error(cub3d, "Has repeated textures calls in this input file");
 }
@@ -110,7 +98,7 @@ void	check_color(t_game *cub3d, char *color, int face)
 	int	g;
 	int	b;
 	(void)face;
-	
+
 	if (ft_count_words(color, ',') != 3)
 		exit_error(cub3d, "Invalid color format");
 	cub3d->colors = ft_split(color, ',');
@@ -129,9 +117,6 @@ void	check_color(t_game *cub3d, char *color, int face)
 
 int	have_duplicates(t_game *cub3d)
 {
-	if (cub3d->north_count > 1 || cub3d->south_count > 1
-		|| cub3d->east_count > 1 || cub3d->west_count > 1)
-		return (1);
 	if (ft_strcmp(cub3d->north, cub3d->south) == 0
 		|| ft_strcmp(cub3d->north, cub3d->east) == 0
 		|| ft_strcmp(cub3d->north, cub3d->west) == 0

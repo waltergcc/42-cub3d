@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 17:57:48 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 18:26:27 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ typedef struct s_game
 	char		*west;
 	char		*line;
 	char		**colors;
-	int			north_count;
-	int			south_count;
-	int			east_count;
-	int			west_count;
 }				t_game;
 
 // utils.c
