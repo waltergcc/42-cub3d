@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:48:12 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 12:23:38 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 15:32:39 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	check_filename(t_game *cub3d, char *file, int mode)
 	if (i <= 4)
 	{
 		if (mode == CUB)
-			exit_error(cub3d, "Invalid input file name");
+			exit_error(NULL, "Invalid input file name");
 		else if (mode == XPM)
 			exit_error(cub3d, "Invalid texture file name");
 	}

@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 12:36:03 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/03 15:56:10 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*get_value(char *line, int i)
 	while (line && ft_isspace(line[i]))
 		i++;
 	end = i;
-	while (line && !ft_isspace(line[end]) && line[end] != '\n')
+	while (line[end] && !ft_isspace(line[end]) && line[end] != '\n')
 		end++;
 	line[end] = '\0';
 	return (line + i);
@@ -123,5 +123,5 @@ void	parse_file(t_game *cub3d, char *file)
 		line = get_next_line(fd);
 	}
 	close (fd);
-	// final_check(cub3d);
+	final_check(cub3d);
 }
