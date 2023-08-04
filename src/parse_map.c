@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:26:10 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 11:23:14 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:52:55 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,25 @@ void	check_map(t_game *cub3d, int i, int j)
 	}
 }
 
+int	is_empty_line(t_game *cub3d, char *line)
+{
+	int	i;
+
+	i = -1;
+	while (line[++i])
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (NO);
+	cub3d->empty_line_before = YES;
+	return (YES);
+}
+
 void	parse_map_line(t_game *cub3d, char *line)
 {
 	int	i;
 
 	i = -1;
+	if (!is_empty_line(cub3d, line) && cub3d->empty_line_before == YES)
+		exit_error(cub3d, ERR_MAP_EMPTY);
 	while (line[++i] && line[i] != '\n')
 	{
 		if (!ft_isset(line[i], VALID_CHARS))
