@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 17:57:15 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:07:49 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_game
 	char		*temp_map;
 	char		spawn;
 	char		**map;
-	int			empty_line_before;
+	int			empty_line;
 }				t_game;
 
 // utils.c

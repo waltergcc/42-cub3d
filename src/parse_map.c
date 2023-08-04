@@ -6,11 +6,23 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:26:10 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 17:57:15 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:07:49 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	is_empty_line(t_game *cub3d, char *line)
+{
+	int	i;
+
+	i = -1;
+	while (line[++i])
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (NO);
+	cub3d->empty_line = YES;
+	return (YES);
+}
 
 int	is_surrounded_by_walls(t_game *cub3d, int direction, int i, int j)
 {
@@ -64,24 +76,12 @@ void	check_map(t_game *cub3d, int i, int j)
 	}
 }
 
-int	is_empty_line(t_game *cub3d, char *line)
-{
-	int	i;
-
-	i = -1;
-	while (line[++i])
-		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
-			return (NO);
-	cub3d->empty_line_before = YES;
-	return (YES);
-}
-
 void	parse_map_line(t_game *cub3d, char *line)
 {
 	int	i;
 
 	i = -1;
-	if (!is_empty_line(cub3d, line) && cub3d->empty_line_before == YES)
+	if (!is_empty_line(cub3d, line) && cub3d->empty_line == YES)
 		exit_error(cub3d, ERR_MAP_EMPTY);
 	while (line[++i] && line[i] != '\n')
 	{
@@ -102,7 +102,8 @@ void	parse_map(t_game *cub3d, int fd)
 	while (cub3d->line)
 	{
 		parse_map_line(cub3d, cub3d->line);
-		cub3d->temp_map = ft_strjoin(cub3d->temp_map, cub3d->line);
+		if (!cub3d->empty_line)
+			cub3d->temp_map = ft_strjoin(cub3d->temp_map, cub3d->line);
 		free(cub3d->line);
 		cub3d->line = get_next_line(fd);
 	}
