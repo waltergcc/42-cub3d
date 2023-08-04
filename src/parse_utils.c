@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:01:35 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/03 21:02:20 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:08:18 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	check_texture_file(t_game *cub3d, char *file, int fd)
 	check_filename(cub3d, file, XPM);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		exit_error(cub3d, "Invalid texture file.");
+		exit_error(cub3d, ERR_XPM_OPEN);
 	close(fd);
 }
 

@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:26:10 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 10:46:57 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:23:14 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	is_arounded_by_walls(t_game *cub3d, int direction, int i, int j)
 void	check_map(t_game *cub3d, int i, int j)
 {
 	if (!cub3d->spawn)
-		exit_error(cub3d, "No spawn point");
+		exit_error(cub3d, ERR_MAP_NSPAWN);
 	while (cub3d->map[++i])
 	{
 		j = -1;
@@ -59,7 +59,7 @@ void	check_map(t_game *cub3d, int i, int j)
 				|| !is_arounded_by_walls(cub3d, 5, i, j)
 				|| !is_arounded_by_walls(cub3d, 6, i, j)
 				|| !is_arounded_by_walls(cub3d, 7, i, j))
-				exit_error(cub3d, "The map isn't well surrounded by walls");
+				exit_error(cub3d, ERR_MAP_WALLS);
 		}
 	}
 }
@@ -72,13 +72,13 @@ void	parse_map_line(t_game *cub3d, char *line)
 	while (line[++i] && line[i] != '\n')
 	{
 		if (!ft_isset(line[i], VALID_CHARS))
-			exit_error(cub3d, "Invalid character in map");
+			exit_error(cub3d, ERR_MAP_CHARS);
 		if (ft_isset(line[i], SPAWN_CHARS))
 		{
 			if (cub3d->spawn == 0)
 				cub3d->spawn = line[i];
 			else
-				exit_error(cub3d, "Multiple spawn points");
+				exit_error(cub3d, ERR_MAP_MSPAWN);
 		}
 	}
 }

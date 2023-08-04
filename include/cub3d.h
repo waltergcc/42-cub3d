@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 10:48:48 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:25:48 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,29 @@
 # define SPAWN_CHARS	"NSEW"
 # define VALID_CHARS	" 01NSEW"
 
+# define ERR_ARGS		"Invalid number of arguments"
 
+# define ERR_CUB		"Invalid input file name"
+# define ERR_CUB_EXT	"Input file must be .cub"
+# define ERR_CUB_OPEN	"Couldn't open input file"
+
+# define ERR_XPM		"Invalid texture file name"
+# define ERR_XPM_EXT	"Asset file must be .xpm"
+# define ERR_XPM_OPEN	"Couldn't open texture file"
+# define ERR_XPM_RPT	"Has repeated textures in this input file"
+# define ERR_XPM_CALL	"Has repeated textures calls in this input file"
+
+# define ERR_COLOR_FMT	"Color format must be R,G,B"
+# define ERR_COLOR_NUM	"Colors must have only positive numbers"
+# define ERR_COLOR_RANG "Colors must be between 0 and 255"
+# define ERR_COLOR_CALL	"Has repeated colors calls in this input file"
+
+# define ERR_PARAMS		"The input file doesn't have all necessary parameters"
+
+# define ERR_MAP_WALLS	"The map isn't well surrounded by walls"
+# define ERR_MAP_CHARS	"Invalid character in map"
+# define ERR_MAP_MSPAWN	"Multiple spawn points"
+# define ERR_MAP_NSPAWN	"No spawn point"
 
 typedef struct s_game
 {
