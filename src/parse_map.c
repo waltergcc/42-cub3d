@@ -6,13 +6,13 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:26:10 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 17:52:55 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:57:15 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_arounded_by_walls(t_game *cub3d, int direction, int i, int j)
+int	is_surrounded_by_walls(t_game *cub3d, int direction, int i, int j)
 {
 	int	x;
 	int	y;
@@ -51,14 +51,14 @@ void	check_map(t_game *cub3d, int i, int j)
 			if (cub3d->map[i][j] != '0'
 				&& !ft_isset(cub3d->map[i][j], SPAWN_CHARS))
 				continue ;
-			if (!is_arounded_by_walls(cub3d, 0, i, j)
-				|| !is_arounded_by_walls(cub3d, 1, i, j)
-				|| !is_arounded_by_walls(cub3d, 2, i, j)
-				|| !is_arounded_by_walls(cub3d, 3, i, j)
-				|| !is_arounded_by_walls(cub3d, 4, i, j)
-				|| !is_arounded_by_walls(cub3d, 5, i, j)
-				|| !is_arounded_by_walls(cub3d, 6, i, j)
-				|| !is_arounded_by_walls(cub3d, 7, i, j))
+			if (!is_surrounded_by_walls(cub3d, 0, i, j)
+				|| !is_surrounded_by_walls(cub3d, 1, i, j)
+				|| !is_surrounded_by_walls(cub3d, 2, i, j)
+				|| !is_surrounded_by_walls(cub3d, 3, i, j)
+				|| !is_surrounded_by_walls(cub3d, 4, i, j)
+				|| !is_surrounded_by_walls(cub3d, 5, i, j)
+				|| !is_surrounded_by_walls(cub3d, 6, i, j)
+				|| !is_surrounded_by_walls(cub3d, 7, i, j))
 				exit_error(cub3d, ERR_MAP_WALLS);
 		}
 	}
