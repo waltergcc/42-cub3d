@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 16:17:12 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:00:18 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 
 # define CUB 			1
 # define XPM			2
+
+# define TEXTURE		1
+# define COLOR			2
 
 # define NORTH			1
 # define SOUTH			2
@@ -93,7 +96,7 @@ void	check_texture(t_game *cub3d, char *file, int face);
 int		have_duplicates(t_game *cub3d);
 int		have_all_params(t_game *cub3d);
 void	check_texture_file(t_game *cub3d, char *file, int fd);
-char	*get_value(char *line, int i);
+char	*get_value(char *line, int i, int mode);
 
 // parse_map.c
 void	parse_map(t_game *cub3d, int fd);

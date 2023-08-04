@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:01:35 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 16:31:11 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:58:36 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,23 @@ void	check_texture_file(t_game *cub3d, char *file, int fd)
 	close(fd);
 }
 
-char	*get_value(char *line, int i)
+char	*get_value(char *line, int i, int mode)
 {
 	int	end;
 
 	while (line && ft_isspace(line[i]))
 		i++;
 	end = i;
-	while (line[end] /* && !ft_isspace(line[end]) */ && line[end] != '\n')
-		end++;
+	if (mode == TEXTURE)
+	{
+		while (line[end] && !ft_isspace(line[end]) && line[end] != '\n')
+			end++;
+	}
+	else if (mode == COLOR)
+	{
+		while (line[end] && line[end] != '\n')
+			end++;
+	}
 	line[end] = '\0';
 	return (line + i);
 }

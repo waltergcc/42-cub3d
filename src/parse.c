@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 16:32:31 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:01:03 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,17 @@ void	parse_line(t_game *cub3d, char *line, int i)
 	while (ft_isspace(line[i]))
 		i++;
 	if (ft_strncmp(line + i, "NO", 2) == 0)
-		check_texture(cub3d, get_value(line, i + 2), NORTH);
+		check_texture(cub3d, get_value(line, i + 2, TEXTURE), NORTH);
 	else if (ft_strncmp(line + i, "SO", 2) == 0)
-		check_texture(cub3d, get_value(line, i + 2), SOUTH);
+		check_texture(cub3d, get_value(line, i + 2, TEXTURE), SOUTH);
 	else if (ft_strncmp(line + i, "EA", 2) == 0)
-		check_texture(cub3d, get_value(line, i + 2), EAST);
+		check_texture(cub3d, get_value(line, i + 2, TEXTURE), EAST);
 	else if (ft_strncmp(line + i, "WE", 2) == 0)
-		check_texture(cub3d, get_value(line, i + 2), WEST);
+		check_texture(cub3d, get_value(line, i + 2, TEXTURE), WEST);
 	else if (ft_strncmp(line + i, "F", 1) == 0)
-		check_color(cub3d, get_value(line, i + 1), FLOOR);
+		check_color(cub3d, get_value(line, i + 1, COLOR), FLOOR);
 	else if (ft_strncmp(line + i, "C", 1) == 0)
-		check_color(cub3d, get_value(line, i + 1), CEILING);
+		check_color(cub3d, get_value(line, i + 1, COLOR), CEILING);
 	else if (line[i] == '0' || line[i] == '1')
 		cub3d->start_map = YES;
 	else if (line[i] != '\0')
