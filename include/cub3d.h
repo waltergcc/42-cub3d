@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 10:38:08 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:48:48 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,23 @@
 
 # include "../lib/libft/libft.h"
 
-# define NO			0
-# define YES 		1
+# define NO				0
+# define YES 			1
 
-# define CUB 		1
-# define XPM		2
+# define CUB 			1
+# define XPM			2
 
-# define NORTH		1
-# define SOUTH		2
-# define EAST		3
-# define WEST		4
-# define FLOOR		5
-# define CEILING	6
+# define NORTH			1
+# define SOUTH			2
+# define EAST			3
+# define WEST			4
+# define FLOOR			5
+# define CEILING		6
 
-# define SPAWN		"NSEW"
-# define MAP_CHARS	" 01NSEW"
+# define SPAWN_CHARS	"NSEW"
+# define VALID_CHARS	" 01NSEW"
+
+
 
 typedef struct s_game
 {

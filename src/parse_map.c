@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:26:10 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 10:41:20 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:46:57 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	check_map(t_game *cub3d, int i, int j)
 		j = -1;
 		while (cub3d->map[i][++j])
 		{
-			if (cub3d->map[i][j] != '0' && !ft_isset(cub3d->map[i][j], SPAWN))
+			if (cub3d->map[i][j] != '0'
+				&& !ft_isset(cub3d->map[i][j], SPAWN_CHARS))
 				continue ;
 			if (!is_arounded_by_walls(cub3d, 0, i, j)
 				|| !is_arounded_by_walls(cub3d, 1, i, j)
@@ -70,9 +71,9 @@ void	parse_map_line(t_game *cub3d, char *line)
 	i = -1;
 	while (line[++i] && line[i] != '\n')
 	{
-		if (!ft_isset(line[i], MAP_CHARS))
+		if (!ft_isset(line[i], VALID_CHARS))
 			exit_error(cub3d, "Invalid character in map");
-		if (ft_isset(line[i], SPAWN))
+		if (ft_isset(line[i], SPAWN_CHARS))
 		{
 			if (cub3d->spawn == 0)
 				cub3d->spawn = line[i];
