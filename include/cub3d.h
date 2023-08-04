@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 00:32:28 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:38:08 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,8 @@ char	*get_value(char *line, int i);
 
 // parse_map.c
 void	parse_map(t_game *cub3d, int fd);
+int		is_arounded_by_walls(t_game *cub3d, int direction, int i, int j);
+void	check_map(t_game *cub3d, int i, int j);
+void	parse_map_line(t_game *cub3d, char *line);
 
 #endif
