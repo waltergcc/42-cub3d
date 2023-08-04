@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 11:18:18 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:35:40 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	parse_line(t_game *cub3d, char *line, int i)
 		check_color(cub3d, get_value(line, i + 1), CEILING);
 	else if (line[i] == '0' || line[i] == '1')
 		cub3d->start_map = YES;
+	else if (line[i] != '\0')
+		exit_error(cub3d, ERR_INVALID);
 }
 
 void	parse_file(t_game *cub3d, char *file)
