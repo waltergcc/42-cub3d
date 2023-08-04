@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 11:35:40 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:32:31 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	check_color(t_game *cub3d, char *color, int face)
 	int	g;
 	int	b;
 
-	if (ft_count_words(color, ',') != 3)
+	if (count_words(color, SPLIT_RGB) != 3)
 		exit_error(cub3d, ERR_COLOR_FMT);
-	cub3d->colors = ft_split(color, ',');
+	cub3d->colors = ft_split2(color, SPLIT_RGB);
 	if (!have_numbers(cub3d->colors[0]) || !have_numbers(cub3d->colors[1])
 		|| !have_numbers(cub3d->colors[2]))
 		exit_error(cub3d, ERR_COLOR_NUM);

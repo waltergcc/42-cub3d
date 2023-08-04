@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:01:35 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 11:08:18 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:31:11 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*get_value(char *line, int i)
 	while (line && ft_isspace(line[i]))
 		i++;
 	end = i;
-	while (line[end] && !ft_isspace(line[end]) && line[end] != '\n')
+	while (line[end] /* && !ft_isspace(line[end]) */ && line[end] != '\n')
 		end++;
 	line[end] = '\0';
 	return (line + i);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvieira <anvieira@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 17:34:29 by anvieira          #+#    #+#             */
-/*   Updated: 2023/06/22 18:28:54 by anvieira         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:19:23 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static	int	is_separator(char c, char *sep)
 	return (0);
 }
 
-static int	count_words(char *str, char *sep)
+int	count_words(char *str, char *sep)
 {
 	int	i;
 	int	words;

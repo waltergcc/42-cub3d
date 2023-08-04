@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 11:33:25 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:17:12 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 
 # define SPAWN_CHARS	"NSEW"
 # define VALID_CHARS	" 01NSEW"
+# define SPLIT_RGB		" ,"
 
 # define ERR_ARGS		"Invalid number of arguments"
 
