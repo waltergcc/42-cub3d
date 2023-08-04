@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:01:35 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 16:58:36 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:08:43 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	have_duplicates(t_game *cub3d)
 int	have_all_params(t_game *cub3d)
 {
 	if (cub3d->north && cub3d->south && cub3d->east && cub3d->west
-		&& cub3d->floor != -1 && cub3d->ceiling != -1)
+		&& cub3d->floor != -1 && cub3d->ceiling != -1 && cub3d->start_map == 1)
 		return (YES);
 	return (NO);
 }

@@ -8,7 +8,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/cub3D",
             "args": [
-				"assets/maps/fix/square_map.cub"
+				"assets/maps/check_erros/fix/map_missing.cub"
 			],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
