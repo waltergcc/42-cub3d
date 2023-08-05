@@ -6,11 +6,22 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:01:35 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/05 10:07:45 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/05 10:19:45 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	have_numbers(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (!ft_isdigit(str[i]))
+			return (NO);
+	return (YES);
+}
 
 int	have_all_params(t_game *cub3d)
 {
@@ -48,4 +59,22 @@ char	*get_value(char *line, int i, int mode)
 	}
 	line[end] = '\0';
 	return (line + i);
+}
+
+void	check_filename(t_game *cub3d, char *file, int mode)
+{
+	size_t	i;
+
+	i = ft_strlen(file);
+	if (i <= 4)
+	{
+		if (mode == CUB)
+			exit_error(NULL, ERR_CUB);
+		else if (mode == XPM)
+			exit_error(cub3d, ERR_XPM);
+	}
+	else if (mode == CUB && !ft_strnstr((file + i - 4), ".cub", 4))
+		exit_error(NULL, ERR_CUB_EXT);
+	else if (mode == XPM && !ft_strnstr((file + i - 4), ".xpm", 4))
+		exit_error(cub3d, ERR_XPM_EXT);
 }

@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/05 10:08:07 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/05 10:19:58 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,7 @@ typedef struct s_game
 
 // utils.c
 int		exit_error(t_game *cub3d, char *msg);
-void	check_filename(t_game *cub3d, char *file, int mode);
 void	free_split(char **split);
-int		have_numbers(char *str);
 
 // clean_exit.c
 int		quit_game(t_game *cub3d);
@@ -95,7 +93,9 @@ void	check_color(t_game *cub3d, char *color, int face);
 void	check_texture(t_game *cub3d, char *file, int face);
 
 // parse_utils.c
+int		have_numbers(char *str);
 int		have_all_params(t_game *cub3d);
+void	check_filename(t_game *cub3d, char *file, int mode);
 void	check_texture_file(t_game *cub3d, char *file, int fd);
 char	*get_value(char *line, int i, int mode);
 
