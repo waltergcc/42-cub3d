@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 09:42:28 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 18:07:49 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/05 10:08:07 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	check_color(t_game *cub3d, char *color, int face);
 void	check_texture(t_game *cub3d, char *file, int face);
 
 // parse_utils.c
-int		have_duplicates(t_game *cub3d);
 int		have_all_params(t_game *cub3d);
 void	check_texture_file(t_game *cub3d, char *file, int fd);
 char	*get_value(char *line, int i, int mode);

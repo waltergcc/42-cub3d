@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 10:34:54 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/08/04 17:01:03 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/08/05 10:07:55 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,6 @@ void	parse_file(t_game *cub3d, char *file)
 	}
 	if (!have_all_params(cub3d))
 		exit_error(cub3d, ERR_PARAMS);
-	if (have_duplicates(cub3d))
-		exit_error(cub3d, ERR_XPM_RPT);
 	parse_map(cub3d, fd);
 	close (fd);
 }
