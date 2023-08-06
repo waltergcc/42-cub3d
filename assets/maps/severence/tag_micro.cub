@@ -3,14 +3,9 @@ SO assets/sprites/south_wall.xpm
 EA assets/sprites/east_wall.xpm
 WE assets/sprites/west_wall.xpm
 
-F 18,53,25
-C 153,204,255
+F 64,109,78
+C 212,224,224
 
-111111111111
-1         11
-1          1
-111111111111
-10S000000001
-111111111111
-11         1
-111111111111
+111
+1N1
+111
